@@ -10,7 +10,10 @@
     u have pending requests from:
     <ul>
         <% @user.pending_requests.each do |req| %>
-            <li><%= User.find(req.user_id).name %></li>
+            <li>
+            <%= User.find(req.user_id).name %> 
+            <%= button_to "Accept Friend Request", accept_request_user_path, params: {requestor_id: req.user_id} %>
+            </li>
         <% end %>
     </ul>
 <% end %>
