@@ -11,7 +11,10 @@
   </head>
 
   <body>
-  
+    <%  if user_signed_in? %>
+        current_user: <%= current_user.name %>
+    <%end%>
+    
     <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>
     <% end %>
