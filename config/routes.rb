@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       post 'create_request'
       post 'accept_request'
+      post 'decline_request'
     end
   end
 end

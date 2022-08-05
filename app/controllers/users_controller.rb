@@ -25,4 +25,15 @@ class UsersController < ApplicationController
       render :show, status: :unprocessable_entity
     end
   end
+
+  def decline_request
+    @request = Request.where(friend_id: current_user.id, user_id: params[:requestor_id])[0]
+    if @request.delete
+      flash[:success] = 'Friendship Declined!'
+      redirect_to root_path
+    else
+      flash.now[:error] = 'Could not decline!'
+      render :show, status: :unprocessable_entity
+    end
+  end
 end

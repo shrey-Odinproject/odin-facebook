@@ -13,6 +13,7 @@
             <li>
             <%= User.find(req.user_id).name %> 
             <%= button_to "Accept Friend Request", accept_request_user_path, params: {requestor_id: req.user_id} %>
+            <%= button_to "Decline Friend Request", decline_request_user_path, params: {requestor_id: req.user_id} %>
             </li>
         <% end %>
     </ul>
