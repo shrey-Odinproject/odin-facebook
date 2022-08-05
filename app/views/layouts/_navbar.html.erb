@@ -1,12 +1,19 @@
-<%  if user_signed_in? %>
-    current_user: <%= current_user.name %>
-    <%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %>
+<div class="navbar">
+    <%=link_to 'home', root_path %>
 
-    <% if !current_user.pending_requests.empty? %>
-        notification: 
-        <%=link_to 'see requests', user_path(current_user.id) %>
-    <% end %>
+    <%  if user_signed_in? %>
+        <h2>current_user: <%= current_user.name %></h2>
+        
+        <%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %>
+    
+        <% unless current_user.pending_requests.empty? %>
+            <div class = 'notifications' >
+                <%=link_to "Latest Request", user_path(current_user.id) %>
+                from:<i><b><%= User.find(current_user.pending_requests[-1].user_id).name%></b></i>
+            </div>
+        <% end %>
 
-<%end%>
-
-<%=link_to 'home', root_path %>
+    <%end%>
+</div>
+<%# current_user's pending req me jo last entry hogi wo latest req bhejne wala
+hoga to uska naam dikha diya bas %>
