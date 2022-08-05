@@ -11,20 +11,12 @@
   </head>
 
   <body>
-    <%  if user_signed_in? %>
-        current_user: <%= current_user.name %>
-    <%end%>
+    <%= render partial: 'layouts/navbar' %>
     
     <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>
     <% end %>
 
-    <%= yield %>
-    
-    <%  if user_signed_in? %>
-        <%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %><br><br>
-    <% end %>
-    
-    <%=link_to 'home', root_path %>
+    <%= yield %>  
   </body>
 </html>
