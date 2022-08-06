@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :requests
   has_many :pending_requests, -> { where accepted: false }, class_name: 'Request', foreign_key: 'friend_id'
 
+  has_many :posts
+
   def friends
     friends_i_sent_request = Request.where(user_id: id, accepted: true).pluck(:friend_id)
     friends_i_got_request = Request.where(friend_id: id, accepted: true).pluck(:user_id)
