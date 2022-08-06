@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   root "users#index"
@@ -12,4 +13,6 @@ Rails.application.routes.draw do
       post 'decline_request'
     end
   end
+
+  resources :posts, except: [:index]
 end
