@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :requests
+  has_many :requests, dependent: :destroy
   has_many :pending_requests, -> { where accepted: false }, class_name: 'Request', foreign_key: 'friend_id'
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   def friends
     friends_i_sent_request = Request.where(user_id: id, accepted: true).pluck(:friend_id)
