@@ -1,9 +1,21 @@
 <%= form_with model: post do |form| %>
-  <%= form.label :title, "pick a title:" %>
+  <%= form.label :title, "Title:" %>
   <%= form.text_field :title%> <br><br>
 
-  <%= form.label :body, "body:" %>
-  <%= form.text_area :body ,placeholder: "Anything u would like to post"%> <br><br>
+  <%= form.label :body, "Content:" %>
+  <%= form.text_area :body ,placeholder: "Write your thoughts !"%> <br><br>
   
   <%= form.submit "Submit" %>
+<% end %>
+
+<% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
 <% end %>

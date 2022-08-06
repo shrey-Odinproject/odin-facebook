@@ -9,7 +9,7 @@ class PostsController < ApplicationController
       flash[:success] = 'Post created'
       redirect_to root_path
     else
-      flash.now[:error] = 'Could not create post!'
+      flash.now[:error] = 'Error!'
       render :new, status: :unprocessable_entity
     end
   end
