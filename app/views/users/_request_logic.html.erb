@@ -4,7 +4,7 @@
 
 <%# when viewing ur own profile %>
 <% elsif current_user == user %> 
-    u have pending requests from:
+    <h3>u have pending requests from:</h3>
     <ul>
         <% user.pending_requests.each do |req| %>
             <li>
