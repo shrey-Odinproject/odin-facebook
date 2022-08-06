@@ -9,4 +9,4 @@
                   } %>
 <%end %>
 
-<%= button_to 'Like', post_likes_path(@post)%>
+<%= button_to 'Like', post_likes_path(@post)%> <%= @post.likes.count %>
