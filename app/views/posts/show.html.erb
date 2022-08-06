@@ -9,4 +9,12 @@
                   } %>
 <%end %>
 
-<%= button_to 'Like', post_likes_path(@post)%> <%= @post.likes.count %>
+<div>
+    <%= @post.likes.count %>
+    <%= button_to 'Like', post_likes_path(@post)%>
+    <%= button_to 'Unlike', {:controller => :likes,
+          :action => 'destroy', :post_id => @post.id },  method: :delete %>
+</div>
+
+<%# using path helper was more complicated as we needed both the post and the like (as route is 
+/posts/post_id/like/id) %>
