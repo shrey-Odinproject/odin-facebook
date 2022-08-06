@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, except: [:index]
+  resources :posts, except: [:index] do
+    resources :likes, only:[:create]
+  end
 end
