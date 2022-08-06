@@ -2,9 +2,9 @@
     <%=link_to 'home', root_path %>
 
     <%  if user_signed_in? %>
-        <h2>current_user: <%= current_user.name %></h2>
-        
-        <%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %>
+        <h3>current_user: <%= current_user.name %></h3>
+
+        <%= link_to 'create post', new_post_path %>    
     
         <% unless current_user.pending_requests.empty? %>
             <div class = 'notifications' >
@@ -12,6 +12,8 @@
                 from:<i><b><%= User.find(current_user.pending_requests[-1].user_id).name%></b></i>
             </div>
         <% end %>
+
+        <%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %>
 
     <%end%>
 </div>
