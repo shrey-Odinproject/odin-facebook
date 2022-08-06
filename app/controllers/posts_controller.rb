@@ -31,6 +31,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_author = User.find(@post.user_id)
   end
 
   def destroy

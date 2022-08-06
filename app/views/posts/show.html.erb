@@ -1,4 +1,6 @@
 <h1><%= @post.title %></h1>
 <h3><%= @post.body %></h3>
 
-<%= link_to "Edit", edit_post_path(@post) %>
+<% if current_user == @post_author %>
+    <%= link_to "Edit", edit_post_path(@post) %>
+<%end %>
