@@ -1,0 +1,9 @@
+<%= form_with model: post do |form| %>
+  <%= form.label :title, "pick a title:" %>
+  <%= form.text_field :title%> <br><br>
+
+  <%= form.label :body, "body:" %>
+  <%= form.text_area :body ,placeholder: "Anything u would like to post"%> <br><br>
+  
+  <%= form.submit "Submit" %>
+<% end %>
