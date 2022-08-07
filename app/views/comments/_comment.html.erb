@@ -1,9 +1,9 @@
 <div>
 <%= comment.body %> -- <i><%= User.find(comment.user_id).name %></i>
-
+ &nbsp;
 <%# if logged in user is comment author then they can delete %>
 <% if current_user == User.find(comment.user_id) %>
-    <%= link_to "Delete", [comment.post, comment], data: {
+    <%= link_to "delete", [comment.post, comment], data: {
                     turbo_method: :delete
                 } %>
 <%end%>
