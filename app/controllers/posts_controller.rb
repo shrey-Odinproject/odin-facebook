@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = 'Post created'
-      redirect_to post_path(params[:id])
+      redirect_to @post
     else
       flash.now[:error] = 'Error!'
       render :new, status: :unprocessable_entity
