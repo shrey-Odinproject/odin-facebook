@@ -42,7 +42,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @latest_two_user_posts = current_user.posts[-2, 2]
+    @latest_two_friends = current_user.friends.last(2)
+    @user_and_friends = @latest_two_friends << current_user
   end
 
   private
