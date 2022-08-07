@@ -20,8 +20,6 @@
 /posts/post_id/like/id) %>
 <h4>All comments:</h4>
 <%= render @post.comments %>
+
 <br><br>
-<%= form_with model: [@post, @post.comments.build] do |form| %>
-  <%= form.text_area :body ,placeholder: "Comment on this post "%>
-  <%= form.submit "Comment" %>
-<% end %>
+<%= render partial: "/comments/comment_form", locals: {post: @post} %>
