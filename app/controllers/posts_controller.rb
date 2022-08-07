@@ -41,6 +41,9 @@ class PostsController < ApplicationController
     redirect_to user_path(current_user.id), status: :see_other
   end
 
+  def index
+  end
+
   private
 
   def post_params

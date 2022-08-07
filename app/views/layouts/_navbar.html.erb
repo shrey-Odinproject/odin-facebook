@@ -5,7 +5,9 @@
         <h3>current_user: <%= current_user.name %></h3>
 
         <%= link_to 'create post', new_post_path %>    
-    
+
+        <%= link_to 'Timeline', posts_path %>
+
         <% unless current_user.pending_requests.empty? %>
             <div class = 'notifications' >
                 <%=link_to "Latest Request", user_path(current_user.id) %>

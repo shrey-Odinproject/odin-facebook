@@ -4,13 +4,13 @@
 
 <%# when viewing ur own profile %>
 <% elsif current_user == user %> 
-    <h3>u have pending requests from:</h3>
+    <h3>u have pending friend requests from:</h3>
     <ul>
         <% user.pending_requests.each do |req| %>
             <li>
             <%= User.find(req.user_id).name %> 
-            <%= button_to "Accept Friend Request", accept_request_user_path, params: {requestor_id: req.user_id} %>
-            <%= button_to "Decline Friend Request", decline_request_user_path, params: {requestor_id: req.user_id} %>
+            <%= button_to "Accept", accept_request_user_path, params: {requestor_id: req.user_id} %>
+            <%= button_to "Decline", decline_request_user_path, params: {requestor_id: req.user_id} %>
             </li>
         <% end %>
     </ul>
