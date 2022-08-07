@@ -10,3 +10,10 @@
         <li><%= link_to post.title, post %></li>
     <%end%>
 </ul>
+
+<h3>All friends</h3>
+<ul>
+    <% @user.friends.each do |fr| %>
+        <li><%= link_to fr.name, fr %></li>
+    <%end%>
+</ul>
