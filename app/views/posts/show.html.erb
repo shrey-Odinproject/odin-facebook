@@ -18,6 +18,12 @@
 
 <%# using path helper was more complicated as we needed both the post and the like (as route is 
 /posts/post_id/like/id) %>
+All comments:
+<ul>
+    <% @post.comments.each do |comm| %>
+        <li><%= comm.body %> by <%= User.find(comm.user_id).name %></li>
+    <%end%>
+</ul>
 
 <%= form_with model: [@post, @post.comments.build] do |form| %>
 
