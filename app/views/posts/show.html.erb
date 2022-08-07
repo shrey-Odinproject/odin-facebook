@@ -18,17 +18,10 @@
 
 <%# using path helper was more complicated as we needed both the post and the like (as route is 
 /posts/post_id/like/id) %>
-All comments:
-<ul>
-    <% @post.comments.each do |comm| %>
-        <li><%= comm.body %> by <%= User.find(comm.user_id).name %></li>
-    <%end%>
-</ul>
-
+<h4>All comments:</h4>
+<%= render @post.comments %>
+<br><br>
 <%= form_with model: [@post, @post.comments.build] do |form| %>
-
-  <%= form.label :body, "Comment:" %>
-  <%= form.text_area :body ,placeholder: "Comment on this post "%> <br><br>
-  
-  <%= form.submit "Submit" %>
+  <%= form.text_area :body ,placeholder: "Comment on this post "%>
+  <%= form.submit "Comment" %>
 <% end %>
