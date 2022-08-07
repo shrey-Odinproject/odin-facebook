@@ -1,6 +1,10 @@
-<h1><%= @post.title %></h1>
+<%= turbo_frame_tag id="post" do %>
+    <h1><%= @post.title %></h1>
+    <h3><%= @post.body %></h3>
+<% end %>
 <h7>by <%= @post_author.name %></h7>
-<h3><%= @post.body %></h3>
+
+<br><br>
 
 <% if current_user == @post_author %>
     <%= link_to "Edit", edit_post_path(@post) %> <br><br>

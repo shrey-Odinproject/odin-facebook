@@ -1,1 +1,8 @@
+Most recent posts from current_user:
+<% @latest_two_user_posts.each do |po| %>
+
+    <%= turbo_frame_tag id="post", src: "/posts/#{po.id}" do %>
+
+    <% end %>
+<%end%>
 Recent post from users and their friends

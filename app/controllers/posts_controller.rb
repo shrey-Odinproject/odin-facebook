@@ -42,6 +42,7 @@ class PostsController < ApplicationController
   end
 
   def index
+    @latest_two_user_posts = current_user.posts[-2, 2]
   end
 
   private
