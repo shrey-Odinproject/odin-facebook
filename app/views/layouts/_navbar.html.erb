@@ -2,7 +2,7 @@
     <%=link_to 'home', root_path %>
 
     <%  if user_signed_in? %>
-        <h3>current_user: <%= current_user.name %></h3>
+        <h3>current_user: <%= link_to current_user.name, current_user %></h3>
 
         <%= link_to 'create post', new_post_path %>    
 
