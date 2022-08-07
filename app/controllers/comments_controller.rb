@@ -12,6 +12,13 @@ class CommentsController < ApplicationController
     redirect_to post_path(params[:post_id])
   end
 
+  def destroy
+    @post = Post.find(params[:post_id]) # can use current_user instead of finding @post
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
+    redirect_to post_path(params[:post_id]), status: :see_other
+  end
+
   private
 
   def comment_params

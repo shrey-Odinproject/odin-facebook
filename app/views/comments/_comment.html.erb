@@ -1,2 +1,12 @@
-<div><%= comment.body %> -- <i><%= User.find(comment.user_id).name %></i></div>
+<div>
+<%= comment.body %> -- <i><%= User.find(comment.user_id).name %></i>
+
+<%# if logged in user is comment author then they can delete %>
+<% if current_user == User.find(comment.user_id) %>
+    <%= link_to "Delete", [comment.post, comment], data: {
+                    turbo_method: :delete
+                } %>
+<%end%>
+
+</div>
 <%# 'comment' above is a local variable and is named after this partial name by convention %>
