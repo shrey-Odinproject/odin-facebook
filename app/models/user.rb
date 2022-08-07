@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
-
+  has_many :comments, dependent: :destroy
   def friends
     friends_i_sent_request = Request.where(user_id: id, accepted: true).pluck(:friend_id)
     friends_i_got_request = Request.where(friend_id: id, accepted: true).pluck(:user_id)
