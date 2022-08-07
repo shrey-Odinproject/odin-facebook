@@ -18,3 +18,11 @@
 
 <%# using path helper was more complicated as we needed both the post and the like (as route is 
 /posts/post_id/like/id) %>
+
+<%= form_with model: [@post, @post.comments.build] do |form| %>
+
+  <%= form.label :body, "Comment:" %>
+  <%= form.text_area :body ,placeholder: "Comment on this post "%> <br><br>
+  
+  <%= form.submit "Submit" %>
+<% end %>
