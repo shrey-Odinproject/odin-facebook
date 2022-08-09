@@ -30,6 +30,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    @profile = current_user.profile
+    @profile.destroy
+    flash[:success] = 'profile deleted'
+    redirect_to current_user, status: :see_other
+  end
+
+
   private
   
   def profile_params

@@ -2,10 +2,14 @@
 <p><%= @user.email%></p>
 <%= user_gravatar @user %>
 
+<%# tradditionally all code upto request_logic should be in profile#show %>
 <% if @user.profile %>
     Age: <%= @user.profile.age%> <br>
     Gender: <%= @user.profile.gender%><br>
     <%= link_to 'Edit Profile', edit_profile_path(current_user.profile) %><br>
+    <%= link_to "Destroy", profile_path(@user.profile), data: {
+                    turbo_method: :delete
+                  } %><br>
 <% else %>
     <%= link_to 'Create Profile', new_profile_path %><br>
 <%end%>
