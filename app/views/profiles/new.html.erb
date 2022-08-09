@@ -1,3 +1,5 @@
+<%@gender_options = ['male', 'female'].map { |g| [g, g] }%>
+
 <%= form_with model: @profile do |form| %>
   <%= form.label :gender, "Gender:" %>
   <%= form.select(:gender, (@gender_options)) %> <br><br>
