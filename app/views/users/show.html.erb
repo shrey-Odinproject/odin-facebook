@@ -5,7 +5,7 @@
 <% if @user.profile %>
     Age: <%= @user.profile.age%> <br>
     Gender: <%= @user.profile.gender%><br>
-    show link to edit profile
+    <%= link_to 'Edit Profile', edit_profile_path(current_user.profile) %><br>
 <% else %>
     <%= link_to 'Create Profile', new_profile_path %><br>
 <%end%>
