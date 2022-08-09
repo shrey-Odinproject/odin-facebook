@@ -1,0 +1,9 @@
+<%= form_with model: @profile do |form| %>
+  <%= form.label :gender, "Gender:" %>
+  <%= form.select(:gender, (@gender_options)) %> <br><br>
+
+  <%= form.label :age, "Age:" %>
+  <%= form.text_field :age ,placeholder: "Ur age in years"%> <br><br>
+  
+  <%= form.submit "Create" %>
+<% end %>
