@@ -2,6 +2,14 @@
 <p><%= @user.email%></p>
 <%= user_gravatar @user %>
 
+<% if @user.profile %>
+    Age: <%= @user.profile.age%> <br>
+    Gender: <%= @user.profile.gender%><br>
+    show link to edit profile
+<% else %>
+    <%= link_to 'Create Profile', new_profile_path %><br>
+<%end%>
+
 <%= render partial: "request_logic", locals: {user: @user} %>
 
 <h3>All created posts</h3>
