@@ -2,6 +2,7 @@
 <p><%= @user.email%></p>
 
 <%# tradditionally all code upto request_logic should be in profile#show %>
+<%# Could add a turbo frame to profile#show here and shift all this logic inside profile#show %>
 <% if @user.profile %>
     <%= profile_gravatar @user.profile %> <br>
     Age: <%= @user.profile.age%> <br>
