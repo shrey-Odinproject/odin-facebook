@@ -1,0 +1,23 @@
+<% gender_options = ['male', 'female'].map { |g| [g, g] } %>
+
+<%= form_with model: profile do |form| %>
+  <%= form.label :gender, "Gender:" %>
+  <%= form.select(:gender, (gender_options)) %> <br><br>
+
+  <%= form.label :age, "Age:" %>
+  <%= form.number_field :age ,placeholder: "Ur age in years"%> <br><br>
+  
+  <%= form.submit "Create" %>
+<% end %>
+
+<% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
