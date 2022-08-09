@@ -1,0 +1,22 @@
+<%# tradditionally all code upto request_logic should be in profile#show %>
+<%# Could add a turbo frame to profile#show here and shift all this logic inside profile#show %>
+<% if current_user == user && user.profile %>
+    
+    <%= profile_gravatar user.profile %> <br>
+    Age: <%= user.profile.age%> <br>
+    Gender: <%= user.profile.gender%><br>
+
+    <%= link_to 'Edit Profile', edit_profile_path(user.profile) %><br>
+    <%= link_to "Destroy", profile_path(user.profile), data: {
+                turbo_method: :delete
+                } %><br>   
+<% elsif current_user == user && ! user.profile %>
+    <%= link_to 'Create Profile', new_profile_path %><br>
+
+<%elsif current_user != user &&  user.profile %>
+    <%= profile_gravatar user.profile %> <br>
+    Age: <%= user.profile.age%> <br>
+    Gender: <%= user.profile.gender%><br>
+<% else %>
+    This user has no profile
+<%end%>
