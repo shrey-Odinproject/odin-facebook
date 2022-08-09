@@ -4,6 +4,9 @@
   <% @users.each do |user| %>
     <li>
       <%= link_to user.name, user %>
+      <% if !Request.interacted?(current_user, user) && current_user!=user %>
+        <%= button_to "Send Friend Request", create_request_user_path(user.id) %>
+      <%end%>
     </li>
   <% end %>
 </ul>
