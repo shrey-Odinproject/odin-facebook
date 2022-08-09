@@ -14,6 +14,22 @@ class ProfilesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def edit
+    @profile = Profile.find(params[:id])
+  end
+
+  def update
+    @profile = Profile.find(params[:id])
+    if @profile.update(profile_params)
+      flash[:success] = 'profile edited'
+      redirect_to current_user
+    else
+      flash.now[:error] = 'Error!'
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   private
   
   def profile_params
