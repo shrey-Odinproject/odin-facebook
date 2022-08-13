@@ -24,3 +24,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<%= button_to "Log In using Github", user_github_omniauth_authorize_path, data: {turbo: "false"} %>
