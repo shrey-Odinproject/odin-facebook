@@ -42,8 +42,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @latest_two_friends = current_user.friends.last(2)
-    @user_and_friends = @latest_two_friends << current_user
+    all_user_friends = current_user.friends.to_a # as .friends returns a relation, convert it to an array
+    @user_and_friends = all_user_friends << current_user
   end
 
   private

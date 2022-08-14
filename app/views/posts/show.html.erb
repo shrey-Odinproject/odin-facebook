@@ -1,8 +1,8 @@
 <%= turbo_frame_tag id="post" do %>
     <h1><%= @post.title %></h1>
     <h3><%= @post.body %></h3>
+    <h7>by <%= @post_author.name %></h7>
 <% end %>
-<h7>by <%= @post_author.name %></h7>
 
 <br><br>
 
