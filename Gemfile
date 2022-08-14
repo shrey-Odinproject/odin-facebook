@@ -73,5 +73,6 @@ end
 
 gem 'devise'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem "figaro"
