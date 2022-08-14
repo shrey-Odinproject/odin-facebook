@@ -38,6 +38,7 @@ class User < ApplicationRecord
            email: data['email'],
            password: Devise.friendly_token[0,20]
         )
+        UserMailer.with(user: user).welcome_email.deliver
     end
     user
   end
