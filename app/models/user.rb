@@ -20,25 +20,28 @@ class User < ApplicationRecord
     User.where(id: all_friend_ids)
   end
 
-  def friend_with?(user)
-    Request.accepted_record?(id, user.id)
-  end
+  # def friend_with?(user)
+  #   Request.accepted_record?(id, user.id)
+  # end
 
-  def send_request(user)
-    Request.create(friend_id: user.id)
-  end
+  # useful when you want to do things with the logic of friendship eg show post if these 2 friends
+
+  # def send_request(user)
+  #   requests.create(friend_id: user.id)
+  # end
+
+  # performs the action of sending a request i.e create a new Request record
 
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
 
-    # Uncomment the section below if you want users to be created if they don't exist
     unless user
-        user = User.create(name: data['name'],
-           email: data['email'],
-           password: Devise.friendly_token[0,20]
-        )
-        UserMailer.with(user: user).welcome_email.deliver
+      user = User.create(name: data['name'],
+                         email: data['email'],
+                         password: Devise.friendly_token[0, 20])
+
+      UserMailer.with(user: user).welcome_email.deliver
     end
     user
   end
