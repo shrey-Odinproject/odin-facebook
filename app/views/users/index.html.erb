@@ -5,7 +5,7 @@
     <li>
       <%= link_to user.name, user %>
       <% if !Request.interacted?(current_user, user) && current_user!=user %>
-        <%= button_to "Send Friend Request", create_request_user_path(user.id) %>
+        <%= button_to "Send Friend Request", requests_path, params: {friend_id: user.id} %>
       <%end%>
     </li>
   <% end %>
