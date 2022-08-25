@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :profiles, except: [:inedx, :show]
+  resources :profiles, except: [:inedx]
 end
