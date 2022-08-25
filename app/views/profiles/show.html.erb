@@ -1,4 +1,5 @@
-
+<%= turbo_frame_tag id="profile" do %>
     <%= profile_gravatar @profile %> <br>
     Age: <%= @profile.age%> <br>
     Gender: <%= @profile.gender%><br>
+<%end%>

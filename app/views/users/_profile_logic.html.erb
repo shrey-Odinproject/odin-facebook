@@ -1,10 +1,11 @@
 <%# tradditionally all code upto request_logic should be in profile#show %>
 <%# Could add a turbo frame to profile#show here and shift all this logic inside profile#show %>
+<%# i did what i mentioned above but not fully, only shifted the display part to profile#show and turbo frame it here, logic of when to 
+display edit, delete is still here,   try and compare this to how i display post details on post#index (timeline) %>
+
 <% if current_user == user && user.profile %>
     
-    <%= profile_gravatar user.profile %> <br>
-    Age: <%= user.profile.age%> <br>
-    Gender: <%= user.profile.gender%><br>
+    <%= turbo_frame_tag id="profile", src: "/profiles/#{user.profile.id}"%>
 
     <%= link_to 'Edit Profile', edit_profile_path(user.profile) %><br>
     <%= link_to "Destroy", profile_path(user.profile), data: {
@@ -14,9 +15,7 @@
     <%= link_to 'Create Profile', new_profile_path %><br>
 
 <%elsif current_user != user &&  user.profile %>
-    <%= profile_gravatar user.profile %> <br>
-    Age: <%= user.profile.age%> <br>
-    Gender: <%= user.profile.gender%><br>
+    <%= turbo_frame_tag id="profile", src: "/profiles/#{user.profile.id}"%>
 <% else %>
     This user has no profile
 <%end%>
