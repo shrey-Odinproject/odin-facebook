@@ -11,7 +11,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.where(user_id: current_user.id, post_id: params[:post_id])[0]
+    @like = Like.where(user_id: current_user.id, likeable_id: params[:post_id])[0]
     @post = Post.find(params[:post_id])
     if !already_liked?
       flash[:error] = "Can't unlike!"
@@ -24,7 +24,7 @@ class LikesController < ApplicationController
   private
 
   def already_liked?
-    Like.where(user_id: current_user.id, post_id: params[:post_id]).exists?
+    Like.where(user_id: current_user.id, likeable_id: params[:post_id]).exists?
   end
   # the 2 post ids are for 1) column in likes table, 2) present in params dut to nested routes
 end
