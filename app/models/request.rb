@@ -17,13 +17,13 @@ class Request < ApplicationRecord
 
   # This method is basically checking for an accepted request-record for two given ids, used in friend_with? in user.rb
 
-  # def self.find_accepted_request(id1, id2)
-  #   if Request.where(user_id: id1, friend_id: id2, accepted: true).empty?
-  #     Request.where(user_id: id2, friend_id: id1, accepted: true)[0].id
-  #   else
-  #     Request.where(user_id: id1, friend_id: id2, accepted: true)[0].id
-  #   end
-  # end
+  def self.find_accepted_request(id1, id2)
+    if Request.where(user_id: id1, friend_id: id2, accepted: true).empty?
+      Request.where(user_id: id2, friend_id: id1, accepted: true)[0]
+    else
+      Request.where(user_id: id1, friend_id: id2, accepted: true)[0]
+    end
+  end
 
   # Useful when deleting an accepted request-record  (when u wanna delete a friend)
 end

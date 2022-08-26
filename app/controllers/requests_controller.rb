@@ -15,9 +15,16 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    @request = Request.find(params[:request_id])
-    @request.destroy
-    flash[:success] = 'Friendship Declined!'
+    if params[:request_id] # determines from which view the delete request is coming from
+      @request = Request.find(params[:request_id])
+      @request.destroy
+      flash[:success] = 'Friendship Declined!'
+    else
+      @request = Request.find_accepted_request(params[:user_id], params[:friend_id])
+      @request.destroy
+      flash[:success] = 'Unfriended!'
+    end
+
     redirect_to current_user
   end
 end
