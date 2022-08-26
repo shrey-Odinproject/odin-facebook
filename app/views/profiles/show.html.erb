@@ -1,5 +1,9 @@
 <%= turbo_frame_tag id="profile" do %>
-    <%= profile_gravatar @profile %> <br>
+    <% if @profile.pic.attached? %>
+        <%= image_tag @profile.pic%> <br>
+    <% else %>
+        <%= profile_gravatar @profile %> <br>
+    <% end %>
     Age: <%= @profile.age%> <br>
     Gender: <%= @profile.gender%><br>
 <%end%>
