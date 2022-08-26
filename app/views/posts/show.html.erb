@@ -1,5 +1,8 @@
 <%= turbo_frame_tag id="post" do %>
     <h1><%= @post.title %></h1>
+    <% if @post.image.attached? %>
+        <%= image_tag @post.image%> <br>
+    <% end %>
     <h3><%= @post.body %></h3>
     <h7>by <%= @post_author.name %></h7>
 <% end %>

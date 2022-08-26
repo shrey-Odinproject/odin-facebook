@@ -5,6 +5,8 @@
   <%= form.label :body, "Content:" %>
   <%= form.text_area :body ,placeholder: "Write your thoughts !"%> <br><br>
   
+  <%= form.file_field :image, accept: 'image/png,image/gif,image/jpeg,image/jpg'%>
+
   <%= form.submit "Submit" %>
 <% end %>
 
