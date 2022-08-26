@@ -7,7 +7,7 @@
   <%= form.label :age, "Age:" %>
   <%= form.number_field :age ,placeholder: "Ur age in years"%> <br><br>
   
-  <%= form.file_field :pic%>
+  <%= form.file_field :pic, accept: 'image/png,image/gif,image/jpeg,image/jpg'%>
 
   <%= form.submit "Create" %>
 <% end %>
