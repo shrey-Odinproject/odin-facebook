@@ -1,7 +1,7 @@
 <%= turbo_frame_tag id="post" do %>
     <h1><%= @post.title %></h1>
     <% if @post.image.attached? %>
-        <%= image_tag @post.image%> <br>
+        <%= cl_image_tag @post.image.key %> <br> <%#, transformation:[{width:350, height:200, crop:"fill"},{effect:"sepia"}]%>
     <% end %>
     <h3><%= @post.body %></h3>
     <h7>by <%= @post_author.name %></h7>

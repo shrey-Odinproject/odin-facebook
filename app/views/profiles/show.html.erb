@@ -1,6 +1,6 @@
 <%= turbo_frame_tag id="profile" do %>
     <% if @profile.pic.attached? %>
-        <%= image_tag @profile.pic%> <br>
+        <%= cl_image_tag @profile.pic.key %> <br>
     <% else %>
         <%= profile_gravatar @profile %> <br>
     <% end %>
