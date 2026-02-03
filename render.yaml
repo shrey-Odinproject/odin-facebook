@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: odin-facebook
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    healthCheckPath: /up
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: GITHUB_KEY
+        sync: false
+      - key: GITHUB_SECRET
+        sync: false
+      - key: RAILS_SERVE_STATIC_FILES
+        value: "true"
+      - key: RAILS_LOG_TO_STDOUT
+        value: "true"

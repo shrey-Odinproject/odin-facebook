@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :profiles, except: [:inedx]
+
+  get "/up", to: "health#up"
 end
